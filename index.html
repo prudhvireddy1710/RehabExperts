@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ravula Varshini · Physiotherapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f4f6fa;
+      color: #1a2a3a;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ===== COLOR PALETTE ===== */
+    :root {
+      --primary: #1a2a4a;
+      --primary-light: #2a3f66;
+      --secondary: #00b4b4;
+      --secondary-dark: #009999;
+      --accent: #f4a920;
+      --accent-light: #fbc85a;
+      --bg-light: #f4f6fa;
+      --bg-white: #ffffff;
+      --text-dark: #1a2a3a;
+      --text-soft: #4a5f6f;
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 20px 50px rgba(0, 180, 180, 0.08);
+      --shadow-modal: 0 30px 80px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ===== HEADER ===== */
+    .navbar {
+      padding: 0.8rem 0;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 180, 180, 0.08);
+    }
+
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 600;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: 0.2s;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      transition: 0.3s;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--primary);
+      padding: 0.4rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: var(--secondary);
+      color: #fff;
+      transform: scale(1.04);
+      box-shadow: 0 8px 30px rgba(0, 180, 180, 0.2);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 3.5rem 0 5rem;
+      background: linear-gradient(145deg, #f4f6fa 0%, #e8ecf3 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 180, 180, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content h1 {
+      font-size: 3.6rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      color: var(--primary);
+    }
+
+    .hero-content h1 .highlight {
+      color: var(--secondary);
+    }
+
+    /* ===== HERO STATEMENTS - CARD STYLE ===== */
+    .hero-statements-card {
+      margin: 1.5rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .statement-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 1.2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 180, 180, 0.06);
+      transition: 0.3s;
+    }
+
+    .statement-card:hover {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(0, 180, 180, 0.15);
+      transform: translateX(6px);
+    }
+
+    .statement-card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 180, 180, 0.08);
+      border-radius: 12px;
+      color: var(--secondary);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .statement-card .label {
+      font-weight: 700;
+      color: var(--primary);
+      margin-right: 0.5rem;
+    }
+
+    .statement-card .value {
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+
+    .no-shortcuts-card {
+      border-color: rgba(244, 169, 32, 0.15);
+      background: rgba(244, 169, 32, 0.04);
+    }
+
+    .no-shortcuts-card .statement-card-icon {
+      background: rgba(244, 169, 32, 0.1);
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      margin: 1rem 0 2rem;
+      max-width: 520px;
+      font-weight: 500;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-whatsapp-hero {
+      background: #25D366;
+      color: white;
+      padding: 0.9rem 2.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: 0.3s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      border: none;
+      min-width: 200px;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn-whatsapp-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-whatsapp-hero i {
+      font-size: 1.2rem;
+    }
+
+    .btn-call-hero {
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 2.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: 0.3s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      border: none;
+      min-width: 200px;
+      box-shadow: 0 6px 24px rgba(26, 42, 74, 0.2);
+    }
+
+    .btn-call-hero:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(26, 42, 74, 0.3);
+    }
+
+    .btn-call-hero i {
+      font-size: 1.2rem;
+    }
+
+    .btn-email-hero {
+      background: #ea4335;
+      color: white;
+      padding: 0.9rem 2.4rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: 0.3s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      border: none;
+      min-width: 200px;
+      box-shadow: 0 6px 24px rgba(234, 67, 53, 0.25);
+    }
+
+    .btn-email-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(234, 67, 53, 0.35);
+    }
+
+    .btn-email-hero i {
+      font-size: 1.2rem;
+    }
+
+    /* ===== HERO VISUAL ===== */
+    .hero-visual {
+      border-radius: 40px;
+      min-height: 350px;
+      background-image: url('RehabExpertsLogo.png'); 
+      background-repeat: no-repeat;
+      background-position: center; 
+      background-size: cover;
+      background-color: #e8ecf3;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: 5rem 0;
+      background: var(--bg-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 32px;
+      min-height: 320px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 4px solid rgba(0, 180, 180, 0.1);
+      transition: 0.3s;
+      background: linear-gradient(135deg, #e8ecf3, #dce4ed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image:hover {
+      transform: scale(1.01);
+      border-color: rgba(0, 180, 180, 0.25);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-image .fallback-icon {
+      font-size: 5rem;
+      color: var(--secondary);
+      opacity: 0.5;
+    }
+
+    .about-text h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .about-text p {
+      color: var(--text-soft);
+      margin: 1.2rem 0;
+      font-weight: 450;
+      font-size: 1.05rem;
+    }
+
+    /* ===== EXPERIENCE SECTION ===== */
+    .experience-section {
+      margin: 1.5rem 0 1.2rem;
+      padding: 1.5rem;
+      background: var(--bg-light);
+      border-radius: 20px;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .experience-section h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .experience-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .experience-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(0, 180, 180, 0.06);
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+
+    .exp-year {
+      font-weight: 700;
+      color: var(--secondary);
+      font-size: 0.85rem;
+      min-width: 70px;
+      background: rgba(0, 180, 180, 0.08);
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      text-align: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .exp-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .exp-org {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+
+    .exp-desc {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-top: 0.2rem;
+      opacity: 0.8;
+      line-height: 1.4;
+    }
+
+    /* ===== SKILLS & CERTIFICATIONS ===== */
+    .skills {
+      padding: 5rem 0;
+      background: var(--bg-light);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-card {
+      background: var(--bg-white);
+      padding: 2rem 1.2rem;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 180, 180, 0.04);
+      transition: 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .skill-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .skill-card i {
+      font-size: 2.8rem;
+      color: var(--secondary);
+      margin-bottom: 0.6rem;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover i {
+      transform: scale(1.1);
+      color: var(--accent);
+    }
+
+    .skill-card h4 {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .skill-card p {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 1rem;
+    }
+
+    .btn-view-cert {
+      background: transparent;
+      border: 1.5px solid var(--secondary);
+      color: var(--secondary);
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: auto;
+    }
+
+    .btn-view-cert:hover {
+      background: var(--secondary);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* ===== CERTIFICATE MODAL ===== */
+    .cert-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 1.5rem;
+    }
+
+    .cert-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cert-modal {
+      background: var(--bg-white);
+      border-radius: 32px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-modal);
+      transform: scale(0.9) translateY(20px);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cert-modal-overlay.active .cert-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .cert-modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: var(--text-soft);
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: 0.2s;
+      line-height: 1;
+    }
+
+    .cert-modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .cert-modal-image {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      background: var(--bg-light);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 180, 180, 0.06);
+    }
+
+    .cert-modal-image-placeholder {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #e8ecf3, #dce4ed);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border: 2px dashed rgba(0, 180, 180, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: var(--text-soft);
+    }
+
+    .cert-modal-image-placeholder i {
+      font-size: 4rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-modal-image-placeholder span {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .cert-modal h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .cert-modal .cert-subtitle {
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+      background: rgba(0, 180, 180, 0.08);
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+    }
+
+    .cert-modal .cert-section {
+      margin-top: 1.2rem;
+    }
+
+    .cert-modal .cert-section h4 {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cert-modal .cert-section h4 i {
+      color: var(--secondary);
+    }
+
+    .cert-modal .cert-section p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-left: 0.5rem;
+    }
+
+    .cert-modal .cert-section ul {
+      list-style: none;
+      padding: 0;
+      margin-left: 0.5rem;
+    }
+
+    .cert-modal .cert-section ul li {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cert-modal .cert-section ul li i {
+      color: var(--secondary);
+      font-size: 0.8rem;
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      padding: 5rem 0;
+      background: var(--bg-white);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-item {
+      background: var(--bg-light);
+      padding: 2rem 1.5rem;
+      border-radius: 28px;
+      border-left: 6px solid var(--secondary);
+      transition: 0.3s;
+      box-shadow: var(--shadow);
+    }
+
+    .service-item i {
+      font-size: 2.2rem;
+      color: var(--secondary);
+      margin-bottom: 0.6rem;
+      display: inline-block;
+    }
+
+    .service-item h4 {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .service-item p {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .service-item:hover {
+      background: var(--bg-white);
+      border-left-color: var(--accent);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ===== SERVICE AREAS ===== */
+    .areas {
+      padding: 4rem 0;
+      background: var(--bg-light);
+      border-top: 1px solid rgba(0, 180, 180, 0.06);
+      border-bottom: 1px solid rgba(0, 180, 180, 0.06);
+    }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .area-tag {
+      background: var(--bg-white);
+      padding: 0.8rem 1.2rem;
+      border-radius: 60px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--primary);
+      border: 1px solid rgba(0, 180, 180, 0.08);
+      transition: 0.3s;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow);
+    }
+
+    .area-tag i {
+      color: var(--secondary);
+      margin-right: 8px;
+    }
+
+    .area-tag:hover {
+      border-color: var(--secondary);
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ===== TESTIMONIALS / REVIEWS ===== */
+    .testimonials {
+      padding: 5rem 0;
+      background: var(--bg-white);
+      position: relative;
+    }
+
+    .testimonials-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .testimonials-header .section-title {
+      margin-bottom: 0;
+    }
+
+    .testimonials-header .section-title::after {
+      margin-top: 4px;
+    }
+
+    .testimonials-header .section-sub {
+      margin-bottom: 0;
+    }
+
+    .testimonial-carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      gap: 2rem;
+    }
+
+    /* ===== CRITICAL FIX FOR FLEXBOX TEXT WRAPPING ===== */
+    .testimonial-card {
+      min-width: 0; /* Allows the card to shrink */
+      max-width: calc(33.333% - 1.33rem); /* Prevents card from growing past its space */
+      flex-basis: calc(33.333% - 1.33rem);
+      flex-grow: 0;
+      flex-shrink: 0;
+      background: var(--bg-light);
+      padding: 2rem;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 180, 180, 0.04);
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; /* Stops anything from spilling out */
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .testimonial-card .stars {
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== FORCE TEXT TO WRAP INSIDE THE CARD ===== */
+    .testimonial-card .review-text {
+      color: var(--text-dark);
+      margin: 0.8rem 0;
+      font-weight: 500;
+      font-style: italic;
+      flex-grow: 1;
+      width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    .testimonial-card .review-text .full-text {
+      display: none;
+      margin-top: 0.5rem;
+      width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    .testimonial-card .review-text .full-text.show {
+      display: block;
+    }
+
+    .testimonial-card .review-text .read-more-btn {
+      color: var(--secondary);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-style: normal;
+      transition: 0.2s;
+      background: none;
+      border: none;
+      padding: 0;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .testimonial-card .review-text .read-more-btn:hover {
+      color: var(--accent);
+    }
+
+    .testimonial-card h5 {
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .testimonial-card small {
+      color: var(--text-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    /* ===== CAROUSEL NAVIGATION ===== */
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .carousel-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--secondary);
+      background: transparent;
+      color: var(--secondary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      background: var(--secondary);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .carousel-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .carousel-btn:disabled:hover {
+      background: transparent;
+      color: var(--secondary);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--secondary);
+      width: 28px;
+      border-radius: 10px;
+    }
+
+    .carousel-dot:hover {
+      background: var(--secondary);
+      opacity: 0.6;
+    }
+
+    /* ===== SHARE YOUR EXPERIENCE ===== */
+    .share-experience {
+      padding: 4rem 0;
+      background: var(--bg-light);
+      border-top: 1px solid rgba(0, 180, 180, 0.06);
+    }
+
+    .review-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .review-form .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .review-form .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .review-form .form-group input,
+    .review-form .form-group select,
+    .review-form .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border: 2px solid rgba(0, 180, 180, 0.1);
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: var(--bg-white);
+      transition: 0.3s;
+      color: var(--text-dark);
+    }
+
+    .review-form .form-group input:focus,
+    .review-form .form-group select:focus,
+    .review-form .form-group textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(0, 180, 180, 0.06);
+    }
+
+    .review-form .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .review-form .star-rating {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .review-form .star-rating .star {
+      color: #ddd;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .review-form .star-rating .star.active {
+      color: var(--accent);
+    }
+
+    .review-form .star-rating .star:hover {
+      transform: scale(1.2);
+    }
+
+    .btn-submit-review {
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 3rem;
+      border: none;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 8px 30px rgba(26, 42, 74, 0.15);
+      width: 100%;
+    }
+
+    .btn-submit-review:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(26, 42, 74, 0.2);
+    }
+
+    .btn-submit-review:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .review-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-white);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .review-success.show {
+      display: block;
+    }
+
+    .review-success i {
+      font-size: 3rem;
+      color: #25D366;
+      margin-bottom: 1rem;
+    }
+
+    .review-success h3 {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .review-success p {
+      color: var(--text-soft);
+    }
+
+    /* ===== MODAL / DIALOG BOX ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--bg-white);
+      border-radius: 32px;
+      max-width: 520px;
+      width: 92%;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-modal);
+      transform: scale(0.9) translateY(20px);
+      transition: all 0.3s ease;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      color: var(--text-soft);
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: 0.2s;
+      font-weight: 300;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .modal h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .modal .sub-text {
+      color: var(--text-soft);
+      margin-bottom: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .modal .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .modal .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .modal .form-group input,
+    .modal .form-group select {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border: 2px solid rgba(0, 180, 180, 0.1);
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: var(--bg-light);
+      transition: 0.3s;
+      color: var(--text-dark);
+    }
+
+    .modal .form-group input:focus,
+    .modal .form-group select:focus {
+      outline: none;
+      border-color: var(--secondary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0, 180, 180, 0.06);
+    }
+
+    .modal .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231a2a4a' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1.2rem center;
+    }
+
+    .modal .btn-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      border: none;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 0.5rem;
+      box-shadow: 0 8px 30px rgba(26, 42, 74, 0.15);
+    }
+
+    .modal .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(26, 42, 74, 0.2);
+    }
+
+    .modal .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .modal .success-message {
+      display: none;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .modal .success-message.show {
+      display: block;
+    }
+
+    .modal .success-message i {
+      font-size: 3rem;
+      color: #25D366;
+      margin-bottom: 1rem;
+    }
+
+    .modal .success-message h3 {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal .success-message p {
+      color: var(--text-soft);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary);
+      color: #b6ccda;
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 4px solid var(--secondary);
+    }
+
+    .footer a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--accent);
+    }
+
+    .footer .footer-contact {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .footer .footer-contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #b6ccda;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .footer .footer-contact a:hover {
+      color: var(--accent);
+    }
+
+    .footer .footer-contact i {
+      font-size: 1.1rem;
+    }
+
+    /* ===== TOAST NOTIFICATION ===== */
+    #toastContainer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .toast {
+      background: #25D366;
+      color: white;
+      padding: 16px 24px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      font-weight: 600;
+      font-size: 1rem;
+      animation: slideInRight 0.5s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 4px solid white;
+    }
+
+    .toast.error {
+      background: #e74c3c;
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOutRight {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .testimonial-card {
+        max-width: calc(50% - 1rem);
+        flex-basis: calc(50% - 1rem);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .areas-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+      .modal {
+        padding: 1.8rem;
+        margin: 1rem;
+      }
+      .about-image {
+        min-height: 200px;
+      }
+      .statement-card {
+        padding: 0.6rem 1rem;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .statement-card .label {
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+      .statement-card-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+      }
+      .testimonials-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .testimonial-card {
+        max-width: 100%;
+        flex-basis: 100%;
+      }
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .btn-whatsapp-hero,
+      .btn-call-hero,
+      .btn-email-hero {
+        min-width: 100%;
+        padding: 0.9rem 1.5rem;
+      }
+      .footer .footer-contact {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .experience-item {
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 0.8rem 0;
+      }
+      .exp-year {
+        min-width: auto;
+        font-size: 0.75rem;
+        padding: 0.1rem 0.8rem;
+        align-self: flex-start;
+      }
+      .experience-section {
+        padding: 1rem;
+      }
+      .exp-desc {
+        font-size: 0.75rem;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+      .skill-card {
+        padding: 1.5rem 0.8rem;
+      }
+      .skill-card i {
+        font-size: 2rem;
+      }
+      .cert-modal {
+        padding: 1.5rem;
+        margin: 0.5rem;
+      }
+      .cert-modal h2 {
+        font-size: 1.4rem;
+      }
+      #toastContainer {
+        top: 10px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+      }
+      .toast {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== MODAL / DIALOG BOX ===== -->
+  <div class="modal-overlay" id="consultModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h2>Need Assistance?</h2>
+      <p class="sub-text">Fill out the form below and our care team will contact you shortly.</p>
+
+      <form id="consultForm">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" placeholder="Enter your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="Enter your phone number" required />
+        </div>
+        <div class="form-group">
+          <label for="service">Rehabilitation Center Service Needed</label>
+          <select id="service" required>
+            <option value="">Select a service...</option>
+            <option value="Orthopedic Rehab">Orthopedic Rehab</option>
+            <option value="Neuro Rehab">Neuro Rehab</option>
+            <option value="Sports Recovery">Sports Recovery</option>
+            <option value="Geriatric Care">Geriatric Care</option>
+            <option value="Cardio-Respiratory">Cardio-Respiratory</option>
+            <option value="Home Physiotherapy">Home Physiotherapy</option>
+            <option value="Post-Surgical Rehab">Post-Surgical Rehab</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <i class="fas fa-paper-plane" style="margin-right:10px;"></i> Submit
+        </button>
+      </form>
+
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <h3>Thank You!</h3>
+        <p>We'll contact you shortly. A confirmation has been sent via WhatsApp.</p>
+        <button class="btn-whatsapp-hero" style="margin-top:1.2rem; width:100%; justify-content:center; background:#25D366;" onclick="openWhatsApp()">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <div class="logo">Ravula<span>Varshini</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
+        <a href="#areas">Areas</a>
+        <a href="#testimonials">Reviews</a>
+        <button class="btn-outline" onclick="openModal()">Book Now</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Helping Individuals <span class="highlight">RECOVER</span></h1>
+
+        <div class="hero-statements-card">
+          <div class="statement-card">
+            <div class="statement-card-icon"><i class="fas fa-dumbbell"></i></div>
+            <div>
+              <span class="label">Physio</span>
+              <span class="value">Progressive Strengthening · Workload Management · Education</span>
+            </div>
+          </div>
+          <div class="statement-card">
+            <div class="statement-card-icon"><i class="fas fa-shield-alt"></i></div>
+            <div>
+              <span class="label">Rehab</span>
+              <span class="value">Long-Term Fixes &amp; Prevention Measures</span>
+            </div>
+          </div>
+          <div class="statement-card no-shortcuts-card">
+            <div class="statement-card-icon"><i class="fas fa-ban"></i></div>
+            <div>
+              <span class="value" style="color:var(--accent); font-weight:700;">No short-cuts here</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="hero-sub">Advanced physiotherapy by <strong>Ravula Varshini</strong> – personalized care, delivered to your home in Hyderabad &amp; Rangareddy.</p>
+
+        <div class="hero-buttons">
+          <a href="https://wa.me/919381203163?text=Hi%20Varshini%2C%20I%20would%20like%20to%20book%20an%20appointment%20for%20physiotherapy." target="_blank" class="btn-whatsapp-hero">
+            <i class="fab fa-whatsapp"></i> Book via WhatsApp
+          </a>
+          <a href="tel:9381203163" class="btn-call-hero">
+            <i class="fas fa-phone"></i> Call Now
+          </a>
+          <a href="mailto:ravulavarshini12@gmail.com?subject=Physiotherapy%20Appointment%20Inquiry&body=Hi%20Varshini%2C%0A%0AI%20would%20like%20to%20inquire%20about%20your%20physiotherapy%20services.%0A%0AMy%20name%3A%0AMy%20condition%3A%0APreferred%20time%3A%0A%0AThank%20you!" class="btn-email-hero">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img 
+          src="varshini.png" 
+          alt="Ravula Varshini - Physiotherapist" 
+          style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transform: scale(1.15);"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user-md fallback-icon\'></i><p style=\'color:var(--text-soft); margin-top:0.5rem;\'>Photo not found</p>'"
+        />
+      </div>
+      <div class="about-text">
+        <h2>Meet Ravula Varshini, Your Physiotherapist</h2>
+        <p>I am a dedicated physiotherapist with a profound commitment to helping individuals overcome pain and restore function. My approach combines evidence‑based practice with genuine empathy. Having completed my Bachelor of Physiotherapy and a rigorous clinical internship at MGM Government Hospital, I am skilled in managing complex orthopedic, neurological, and post‑surgical cases. I believe in empowering my patients through education and customized rehabilitation plans.</p>
+
+        <!-- ===== EXPERIENCE SECTION ===== -->
+        <div class="experience-section">
+          <h3><i class="fas fa-briefcase" style="color:var(--secondary); margin-right:10px;"></i> Clinical Experience</h3>
+          <div class="experience-timeline">
+            <div class="experience-item">
+              <div class="exp-year">2025</div>
+              <div class="exp-details">
+                <span class="exp-role">Consultant Physiotherapist</span>
+                <span class="exp-org">SVS Physio Clinic, Hyderabad</span>
+                <span class="exp-desc">Providing advanced physiotherapy care for orthopedic, neurological, and post-surgical patients</span>
+              </div>
+            </div>
+            <div class="experience-item">
+              <div class="exp-year">2024</div>
+              <div class="exp-details">
+                <span class="exp-role">Sports Physiotherapist</span>
+                <span class="exp-org">Police Training Center, Warangal</span>
+                <span class="exp-desc">Sports injury rehabilitation, performance optimization, and fitness assessment for police personnel</span>
+              </div>
+            </div>
+            <div class="experience-item">
+              <div class="exp-year">2023</div>
+              <div class="exp-details">
+                <span class="exp-role">Clinical Physiotherapist</span>
+                <span class="exp-org">Abhaya Hospital, Hanamakonda</span>
+                <span class="exp-desc">Managed diverse cases including orthopedic, neurological, and post-surgical rehabilitation</span>
+              </div>
+            </div>
+            <div class="experience-item">
+              <div class="exp-year">2023</div>
+              <div class="exp-details">
+                <span class="exp-role">Rotatory Clinical Intern</span>
+                <span class="exp-org">MGM Government Hospital, Warangal</span>
+                <span class="exp-desc">Rotated across Orthopedics, Neurology, General Medicine, and Pediatrics departments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS & CERTIFICATIONS ===== -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <h2 class="section-title">Advanced <span class="highlight">Skills</span> &amp; Certifications</h2>
+      <p class="section-sub">My technical expertise allows me to address the root cause of your condition, not just the symptoms.</p>
+
+      <div class="skills-grid">
+        <div class="skill-card" data-cert="manual">
+          <i class="fas fa-hand-holding-heart"></i>
+          <h4>Manual Therapy</h4>
+          <p>Hands‑on techniques</p>
+          <button class="btn-view-cert" onclick="openCertModal('manual')">
+            <i class="fas fa-certificate"></i> View Certificate
+          </button>
+        </div>
+
+        <div class="skill-card" data-cert="sports">
+          <i class="fas fa-running"></i>
+          <h4>Sports Therapy</h4>
+          <p>Performance &amp; recovery</p>
+          <button class="btn-view-cert" onclick="openCertModal('sports')">
+            <i class="fas fa-certificate"></i> View Certificate
+          </button>
+        </div>
+
+        <div class="skill-card" data-cert="cupping">
+          <i class="fas fa-syringe"></i>
+          <h4>Cupping &amp; Dry Needling</h4>
+          <p>Myofascial release</p>
+          <button class="btn-view-cert" onclick="openCertModal('cupping')">
+            <i class="fas fa-certificate"></i> View Certificate
+          </button>
+        </div>
+
+        <div class="skill-card" data-cert="cardio">
+          <i class="fas fa-heartbeat"></i>
+          <h4>Cardiopulmonary Rehab</h4>
+          <p>Heart &amp; lung care</p>
+          <button class="btn-view-cert" onclick="openCertModal('cardio')">
+            <i class="fas fa-certificate"></i> View Certificate
+          </button>
+        </div>
+
+        <div class="skill-card" data-cert="iastm">
+          <i class="fas fa-hand-sparkles"></i>
+          <h4>IASTM</h4>
+          <p>Instrument assisted mobilization</p>
+          <button class="btn-view-cert" onclick="openCertModal('iastm')">
+            <i class="fas fa-certificate"></i> View Certificate
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATE MODAL ===== -->
+  <div class="cert-modal-overlay" id="certModal">
+    <div class="cert-modal">
+      <button class="cert-modal-close" onclick="closeCertModal()">&times;</button>
+      
+      <div id="certModalImageContainer">
+        <div class="cert-modal-image-placeholder">
+          <i class="fas fa-certificate"></i>
+          <span>Certificate Image Coming Soon</span>
+        </div>
+      </div>
+      
+      <h2 id="certModalTitle">Manual Therapy Certification</h2>
+      <span class="cert-subtitle" id="certModalSubtitle">Certified Practitioner</span>
+      
+      <div class="cert-section">
+        <h4><i class="fas fa-info-circle"></i> About this Certification</h4>
+        <p id="certModalAbout">Manual Therapy involves hands-on techniques to assess, diagnose, and treat musculoskeletal pain and dysfunction.</p>
+      </div>
+      
+      <div class="cert-section">
+        <h4><i class="fas fa-stethoscope"></i> How it Helps Patients</h4>
+        <ul id="certModalBenefits">
+          <li><i class="fas fa-check-circle"></i> Reduces acute and chronic pain</li>
+          <li><i class="fas fa-check-circle"></i> Improves joint mobility and flexibility</li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">Services <span class="highlight">I Offer</span></h2>
+      <p class="section-sub">Comprehensive rehabilitation tailored to your unique needs.</p>
+      <div class="service-grid">
+        <div class="service-item"><i class="fas fa-bone"></i><h4>Orthopedic Rehab</h4><p>Back, neck, knee, arthritis, post‑surgical</p></div>
+        <div class="service-item"><i class="fas fa-brain"></i><h4>Neuro Rehab</h4><p>Stroke, paralysis, balance disorders</p></div>
+        <div class="service-item"><i class="fas fa-futbol"></i><h4>Sports Recovery</h4><p>Muscle tears, sprains, performance</p></div>
+        <div class="service-item"><i class="fas fa-user-friends"></i><h4>Geriatric Care</h4><p>Age‑related pain, fall prevention</p></div>
+        <div class="service-item"><i class="fas fa-lungs"></i><h4>Cardio‑Respiratory</h4><p>Breathing control, post‑cardiac</p></div>
+        <div class="service-item"><i class="fas fa-home"></i><h4>Home Physiotherapy</h4><p>Comfortable, safe care at your doorstep</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE AREAS ===== -->
+  <section class="areas" id="areas">
+    <div class="container">
+      <h2 class="section-title">Service <span class="highlight">Areas</span></h2>
+      <p class="section-sub">I provide home physiotherapy services across Hyderabad &amp; Rangareddy, including:</p>
+      <div class="areas-grid">
+        <span class="area-tag"><i class="fas fa-map-pin"></i> LB Nagar</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i> Dilsukhnagar</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i> Kothapet</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i> Karmanghat</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i> BN Reddy</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i> Nagole</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i> Hyderabad</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i> Rangareddy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS / REVIEWS ===== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header">
+        <div>
+          <h2 class="section-title">Patient <span class="highlight">Reviews</span></h2>
+          <p class="section-sub">See what my patients say about their recovery journey.</p>
+        </div>
+        <button class="btn-outline" onclick="document.getElementById('share-experience').scrollIntoView({behavior:'smooth'})" style="border-color:var(--accent); color:var(--accent);">
+          <i class="fas fa-pen"></i> Share Your Experience
+        </button>
+      </div>
+
+      <div class="testimonial-carousel-wrapper">
+        <div class="testimonial-track" id="testimonialTrack">
+          <!-- Reviews loaded from JSON file -->
+        </div>
+      </div>
+
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous reviews">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn" aria-label="Next reviews">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHARE YOUR EXPERIENCE ===== -->
+  <section class="share-experience" id="share-experience">
+    <div class="container">
+      <h2 class="section-title">Share Your <span class="highlight">Experience</span></h2>
+      <p class="section-sub">We value your feedback! Please share your experience with us.</p>
+
+      <div class="review-form" id="reviewFormContainer">
+        <form id="reviewForm">
+          <div class="form-group">
+            <label for="reviewName">Your Name</label>
+            <input type="text" id="reviewName" placeholder="Enter your name" required />
+          </div>
+          <div class="form-group">
+            <label for="reviewCondition">Condition / Service Used</label>
+            <input type="text" id="reviewCondition" placeholder="e.g., Knee replacement, Back pain, Sports injury" required />
+          </div>
+          <div class="form-group">
+            <label>Your Rating</label>
+            <div class="star-rating" id="starRating">
+              <span class="star" data-value="1"><i class="fas fa-star"></i></span>
+              <span class="star" data-value="2"><i class="fas fa-star"></i></span>
+              <span class="star" data-value="3"><i class="fas fa-star"></i></span>
+              <span class="star" data-value="4"><i class="fas fa-star"></i></span>
+              <span class="star" data-value="5"><i class="fas fa-star"></i></span>
+            </div>
+            <input type="hidden" id="reviewRating" value="5" />
+            <span style="font-size:0.85rem; color:var(--text-soft);">Click on a star to rate</span>
+          </div>
+          <div class="form-group">
+            <label for="reviewMessage">Your Experience</label>
+            <textarea id="reviewMessage" placeholder="Tell us about your experience..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit-review" id="submitReviewBtn">
+            <i class="fas fa-paper-plane" style="margin-right:10px;"></i> Submit Review
+          </button>
+        </form>
+
+        <div class="review-success" id="reviewSuccess">
+          <i class="fas fa-check-circle"></i>
+          <h3>Thank You for Your Feedback!</h3>
+          <p>Your review helps us improve our services and helps other patients make informed decisions.</p>
+          <button class="btn-whatsapp-hero" style="margin-top:1.2rem; background:#25D366; border:none; padding:0.8rem 2rem; border-radius:50px; font-weight:700; color:white; cursor:pointer;" onclick="document.getElementById('reviewFormContainer').querySelector('form').reset(); document.getElementById('reviewSuccess').classList.remove('show'); document.getElementById('reviewFormContainer').querySelector('form').style.display='block';">
+            <i class="fas fa-plus"></i> Submit Another Review
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Ravula Varshini · Physiotherapy</p>
+      <div class="footer-contact">
+        <a href="https://wa.me/919381203163" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="tel:9381203163"><i class="fas fa-phone"></i> Call</a>
+        <a href="mailto:ravulavarshini12@gmail.com?subject=Physiotherapy%20Appointment%20Inquiry&body=Hi%20Varshini%2C%0A%0AI%20would%20like%20to%20inquire%20about%20your%20physiotherapy%20services.%0A%0AMy%20name%3A%0AMy%20condition%3A%0APreferred%20time%3A%0A%0AThank%20you!"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+      <p style="margin-top:0.4rem; font-size:0.8rem; opacity:0.7;">Serving Hyderabad &amp; surrounding areas</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- ===== JAVASCRIPT ===== -->
+  <!-- ============================================================ -->
+  <script>
+    // ===== MODAL CONTROLS =====
+    const modal = document.getElementById('consultModal');
+    const closeBtn = document.getElementById('modalClose');
+    const form = document.getElementById('consultForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMessage');
+
+    const PHONE = '919381203163';
+
+    function openModal() {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        form.style.display = 'block';
+        successMsg.classList.remove('show');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:10px;"></i> Submit';
+        form.reset();
+      }, 300);
+    }
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // ===== MODAL FORM SUBMISSION =====
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+
+      if (!name || !phone || !service) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+      const message = `*New Consultation Request*%0A%0A👤 *Name:* ${name}%0A📱 *Phone:* ${phone}%0A🩺 *Service Needed:* ${service}%0A📅 *Requested via:* Website%0A%0APlease contact this patient for further details.`;
+
+      window.open(`https://wa.me/${PHONE}?text=${message}`, '_blank');
+
+      const emailSubject = `New Consultation Request from ${name}`;
+      const emailBody = `New Consultation Request\n\nName: ${name}\nPhone: ${phone}\nService Needed: ${service}\n\nPlease contact the patient.`;
+      window.open(`mailto:ravulavarshini12@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`, '_blank');
+
+      form.style.display = 'none';
+      successMsg.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:10px;"></i> Submit';
+    });
+
+    // ===== WHATSAPP OPEN =====
+    function openWhatsApp() {
+      const message = 'Hi Varshini, I would like to book an appointment for physiotherapy.';
+      window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // ===== CERTIFICATE MODAL DATA =====
+    const certData = {
+      manual: {
+        title: 'Manual Therapy Certification',
+        subtitle: 'Certified Practitioner',
+        image: 'ManualTheraphy-Certificate.png',
+        about: 'Manual Therapy involves hands-on techniques to assess, diagnose, and treat musculoskeletal pain and dysfunction. It includes joint mobilizations, soft tissue techniques, and myofascial release to restore movement and reduce pain. This evidence-based approach is effective for both acute and chronic conditions.',
+        benefits: [
+          'Reduces acute and chronic pain',
+          'Improves joint mobility and flexibility',
+          'Enhances muscle function and performance',
+          'Accelerates recovery from injuries',
+          'Restores normal movement patterns'
+        ]
+      },
+      sports: {
+        title: 'Sports Therapy Certification',
+        subtitle: 'Certified Sports Therapist',
+        image: 'sportsTheraphy-certificate.png',
+        about: 'Sports Therapy focuses on injury prevention, rehabilitation, and performance optimization for athletes and active individuals. It combines exercise prescription, manual therapy, and functional training to help patients return to their sport safely and effectively.',
+        benefits: [
+          'Prevents sports-related injuries',
+          'Accelerates return to sport',
+          'Improves athletic performance',
+          'Enhances strength and conditioning',
+          'Reduces risk of re-injury'
+        ]
+      },
+      cupping: {
+        title: 'Cupping & Dry Needling Certification',
+        subtitle: 'Certified Practitioner',
+        image: 'CuppingTheraphy.png',
+        about: 'Cupping Therapy and Dry Needling are advanced myofascial release techniques used to treat muscle tension, trigger points, and chronic pain. Cupping uses suction to increase blood flow and release fascia, while Dry Needling targets trigger points to reduce muscle spasms and improve function.',
+        benefits: [
+          'Relieves muscle tension and spasms',
+          'Reduces chronic pain and stiffness',
+          'Improves blood circulation',
+          'Accelerates tissue healing',
+          'Enhances range of motion'
+        ]
+      },
+      cardio: {
+        title: 'Cardiopulmonary Rehabilitation Certification',
+        subtitle: 'Certified Professional',
+        image: 'CardioPulmonary-Certificate.png',
+        about: 'Cardiopulmonary Rehabilitation is a specialized program for patients with heart and lung conditions. It combines exercise training, education, and counseling to improve cardiovascular health, respiratory function, and overall quality of life.',
+        benefits: [
+          'Improves heart and lung function',
+          'Reduces symptoms of breathlessness',
+          'Increases exercise tolerance',
+          'Lowers risk of cardiac events',
+          'Enhances quality of life'
+        ]
+      },
+      iastm: {
+        title: 'IASTM Certification',
+        subtitle: 'Certified Practitioner',
+        image: 'IASTM-certificate.png',
+        about: 'Instrument Assisted Soft Tissue Mobilization (IASTM) uses specially designed instruments to detect and treat fascial restrictions, scar tissue, and adhesions. This technique enhances soft tissue mobility, reduces pain, and promotes faster healing.',
+        benefits: [
+          'Breaks down scar tissue and adhesions',
+          'Improves soft tissue mobility',
+          'Reduces pain and inflammation',
+          'Accelerates tissue healing',
+          'Restores normal tissue function'
+        ]
+      }
+    };
+
+    // ===== OPEN CERTIFICATE MODAL =====
+    function openCertModal(certId) {
+      const data = certData[certId];
+      if (!data) return;
+
+      const container = document.getElementById('certModalImageContainer');
+      container.innerHTML = `
+        <img 
+          src="${data.image}" 
+          alt="${data.title}" 
+          class="cert-modal-image" 
+          id="certModalImage"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'cert-modal-image-placeholder\\'><i class=\\'fas fa-certificate\\'></i><span>Certificate Image Coming Soon</span></div>'"
+        />
+      `;
+
+      document.getElementById('certModalTitle').textContent = data.title;
+      document.getElementById('certModalSubtitle').textContent = data.subtitle;
+      document.getElementById('certModalAbout').textContent = data.about;
+
+      const benefitsList = document.getElementById('certModalBenefits');
+      benefitsList.innerHTML = '';
+      data.benefits.forEach(benefit => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check-circle"></i> ${benefit}`;
+        benefitsList.appendChild(li);
+      });
+
+      document.getElementById('certModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // ===== CLOSE CERTIFICATE MODAL =====
+    function closeCertModal() {
+      document.getElementById('certModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('certModal').addEventListener('click', function(e) {
+      if (e.target === this) closeCertModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeCertModal();
+    });
+
+    // ============================================================
+    // ===== REVIEWS - HANDLING JSON WITH FALLBACK =====
+    // ============================================================
+
+    let reviews = [];
+    let currentIndex = 0;
+    let itemsPerView = 3;
+    const track = document.getElementById('testimonialTrack');
+    const dotsContainer = document.getElementById('carouselDots');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // ===== LOAD REVIEWS AND SORT BY TIMESTAMP (NEWEST FIRST) =====
+    async function loadReviews() {
+      try {
+        const response = await fetch('reviews.json');
+        if (!response.ok) throw new Error('Failed to load JSON');
+        const data = await response.json();
+        reviews = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      } catch (error) {
+        console.log('Could not load reviews.json, using fallback data.');
+        reviews = FALLBACK_REVIEWS.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      }
+      renderReviews();
+    }
+
+    // ===== UPDATE ITEMS PER VIEW =====
+    function updateItemsPerView() {
+      const width = window.innerWidth;
+      if (width < 640) itemsPerView = 1;
+      else if (width < 992) itemsPerView = 2;
+      else itemsPerView = 3;
+    }
+
+    // ===== RENDER REVIEWS =====
+    function renderReviews() {
+      updateItemsPerView();
+      track.innerHTML = '';
+      if (reviews.length === 0) {
+        track.innerHTML = `<div class="testimonial-card" style="min-width:100%; text-align:center; padding:3rem;"><p style="color:var(--text-soft);">No reviews yet. Be the first to share your experience!</p></div>`;
+      } else {
+        reviews.forEach((review) => {
+          const card = document.createElement('div');
+          card.className = 'testimonial-card';
+          card.innerHTML = `
+            <div class="stars">${'⭐'.repeat(review.rating)}</div>
+            <div class="review-text">
+              ${review.short}
+              <span class="full-text">${review.full}</span>
+              <button class="read-more-btn" onclick="toggleReadMore(this)">Read More ▼</button>
+            </div>
+            <h5>${review.name}</h5>
+            <small>${review.condition}</small>
+          `;
+          track.appendChild(card);
+        });
+      }
+      updateDots();
+      updateCarousel();
+    }
+
+    // ===== UPDATE DOTS =====
+    function updateDots() {
+      const totalDots = Math.max(1, Math.ceil(reviews.length / itemsPerView));
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalDots; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
+        dot.setAttribute('data-index', i);
+        dot.addEventListener('click', function() { currentIndex = parseInt(this.getAttribute('data-index')); updateCarousel(); });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    // ===== UPDATE CAROUSEL =====
+    function updateCarousel() {
+      const totalSlides = Math.max(1, Math.ceil(reviews.length / itemsPerView));
+      if (currentIndex >= totalSlides) currentIndex = totalSlides - 1;
+      if (currentIndex < 0) currentIndex = 0;
+      if (reviews.length === 0) {
+        track.style.transform = 'translateX(0)';
+        prevBtn.disabled = true; nextBtn.disabled = true;
+        return;
+      }
+      const offset = currentIndex * (100 / itemsPerView) * itemsPerView;
+      track.style.transform = `translateX(-${offset}%)`;
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= totalSlides - 1;
+    }
+
+    // ===== TOGGLE READ MORE =====
+    function toggleReadMore(btn) {
+      const fullText = btn.previousElementSibling;
+      if (fullText.classList.contains('show')) { fullText.classList.remove('show'); btn.textContent = 'Read More ▼'; }
+      else { fullText.classList.add('show'); btn.textContent = 'Read Less ▲'; }
+    }
+
+    // ===== NAVIGATION =====
+    prevBtn.addEventListener('click', function() { if (currentIndex > 0) { currentIndex--; updateCarousel(); } });
+    nextBtn.addEventListener('click', function() {
+      const totalSlides = Math.max(1, Math.ceil(reviews.length / itemsPerView));
+      if (currentIndex < totalSlides - 1) { currentIndex++; updateCarousel(); }
+    });
+
+    // ===== RESPONSIVE =====
+    window.addEventListener('resize', function() {
+      const oldItemsPerView = itemsPerView;
+      updateItemsPerView();
+      if (oldItemsPerView !== itemsPerView) renderReviews();
+    });
+
+    // ============================================================
+    // ===== STAR RATING =====
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', function() {
+      const stars = document.querySelectorAll('.star-rating .star');
+      const ratingInput = document.getElementById('reviewRating');
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          const value = parseInt(this.dataset.value); ratingInput.value = value;
+          stars.forEach(s => { parseInt(s.dataset.value) <= value ? s.classList.add('active') : s.classList.remove('active'); });
+        });
+      });
+      ratingInput.value = 5;
+      stars.forEach(s => { if (parseInt(s.dataset.value) <= 5) s.classList.add('active'); });
+      loadReviews();
+    });
+
+    // ============================================================
+    // ===== REVIEW FORM SUBMISSION =====
+    // ============================================================
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('reviewName').value.trim();
+      const condition = document.getElementById('reviewCondition').value.trim();
+      const rating = document.getElementById('reviewRating').value;
+      const message = document.getElementById('reviewMessage').value.trim();
+      if (!name || !condition || !message) { showToast('Please fill in all fields.', 'error'); return; }
+      const submitBtn = document.getElementById('submitReviewBtn');
+      submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      const stars = '⭐'.repeat(parseInt(rating));
+      const whatsappMsg = `*New Patient Review*%0A%0A👤 *Name:* ${name}%0A📋 *Condition:* ${condition}%0A⭐ *Rating:* ${stars}%0A📝 *Review:* ${message}`;
+      const emailSubject = `New Patient Review from ${name}`;
+      const emailBody = `New Patient Review\n\nName: ${name}\nCondition: ${condition}\nRating: ${stars}\nReview: ${message}`;
+      window.open(`https://wa.me/${PHONE}?text=${whatsappMsg}`, '_blank');
+      window.open(`mailto:ravulavarshini12@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`, '_blank');
+      showToast('✅ Your review has been submitted successfully!');
+      document.getElementById('reviewForm').reset();
+      document.getElementById('reviewRating').value = 5;
+      const starsEl = document.querySelectorAll('.star-rating .star');
+      starsEl.forEach(s => { if (parseInt(s.dataset.value) <= 5) s.classList.add('active'); });
+      const container = document.getElementById('reviewFormContainer');
+      const formEl = container.querySelector('form');
+      const successEl = document.getElementById('reviewSuccess');
+      formEl.style.display = 'none'; successEl.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:10px;"></i> Submit Review';
+    });
+
+    // ============================================================
+    // ===== TOAST NOTIFICATION =====
+    // ============================================================
+    function showToast(message, type = 'success') {
+      let toastContainer = document.getElementById('toastContainer');
+      if (!toastContainer) { toastContainer = document.createElement('div'); toastContainer.id = 'toastContainer'; document.body.appendChild(toastContainer); }
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${message}`;
+      toastContainer.appendChild(toast);
+      setTimeout(() => { toast.style.animation = 'slideOutRight 0.5s ease'; setTimeout(() => { toast.remove(); }, 500); }, 4000);
+    }
+
+    // ============================================================
+    // ===== AUTO-OPEN MODAL ON PAGE LOAD =====
+    // ============================================================
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        openModal();
+      }, 1500);
+    });
+
+    console.log('🚀 Ravula Varshini Physiotherapy Website Loaded');
+    console.log('📱 WhatsApp: +91 9381203163');
+    console.log('✉️ Email: ravulavarshini12@gmail.com');
+    console.log('📁 Reviews loaded from: reviews.json (or fallback)');
+  </script>
+</body>
+</html>
