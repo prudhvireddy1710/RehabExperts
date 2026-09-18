@@ -10,8 +10,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     /* Hide Netlify Badge */
-    div#netlify-badge {
+    div#netlify-badge,
+    #netlify-badge,
+    netlify-badge,
+    iframe[src*="netlify"],
+    a[href*="netlify.com"][target="_blank"] {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     
@@ -1896,6 +1903,52 @@
   <!-- ===== JAVASCRIPT ===== -->
   <!-- ============================================================ -->
   <script>
+    // ============================================================
+    // ===== REMOVE NETLIFY BADGE (Aggressive Method) =====
+    // ============================================================
+    (function removeNetlifyBadge() {
+      const kill = () => {
+        // Remove direct elements
+        document.querySelectorAll('netlify-badge, #netlify-badge, [data-netlify-badge]').forEach(el => el.remove());
+
+        // Check shadow DOMs
+        document.querySelectorAll('*').forEach(el => {
+          if (el.shadowRoot) {
+            const inner = el.shadowRoot.querySelector('#netlify-badge, netlify-badge, [data-netlify-badge]');
+            if (inner) el.remove();
+          }
+        });
+
+        // Catch iframes pointing to netlify
+        document.querySelectorAll('iframe').forEach(iframe => {
+          if (iframe.src && iframe.src.includes('netlify')) iframe.remove();
+        });
+
+        // Catch anchor tags pointing to netlify.com (badge wrapper)
+        document.querySelectorAll('a[href*="netlify.com"]').forEach(a => {
+          const style = window.getComputedStyle(a);
+          if (style.position === 'fixed' || a.querySelector('img, svg, netlify-badge')) {
+            a.remove();
+          }
+        });
+      };
+
+      // Run immediately
+      kill();
+
+      // Keep watching for it appearing
+      const observer = new MutationObserver(kill);
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+
+      // Run on intervals to catch late injections
+      const interval = setInterval(kill, 300);
+      setTimeout(() => clearInterval(interval), 15000);
+
+      // Run on full load and after
+      window.addEventListener('load', kill);
+      window.addEventListener('DOMContentLoaded', kill);
+    })();
+
     // ===== MODAL CONTROLS =====
     const modal = document.getElementById('consultModal');
     const closeBtn = document.getElementById('modalClose');
@@ -2090,6 +2143,34 @@
     const dotsContainer = document.getElementById('carouselDots');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+
+    // ===== FALLBACK REVIEWS (in case reviews.json is missing) =====
+    const FALLBACK_REVIEWS = [
+      {
+        name: 'Priya Sharma',
+        condition: 'Knee Replacement Rehab',
+        rating: 5,
+        short: 'After my knee replacement, I was worried about walking again. Varshini\'s home visits made all the difference...',
+        full: 'After my knee replacement, I was worried about walking again. Varshini\'s home visits made all the difference. She was patient, professional, and tailored every session to my progress. Within 6 weeks I was walking without support!',
+        created_at: '2025-01-15'
+      },
+      {
+        name: 'Rahul Reddy',
+        condition: 'Sports Injury',
+        rating: 5,
+        short: 'I had a serious ankle sprain from football. Varshini\'s sports therapy program got me back on the field in record time...',
+        full: 'I had a serious ankle sprain from football. Varshini\'s sports therapy program got me back on the field in record time. Her knowledge of sports rehab is excellent and she pushed me just the right amount.',
+        created_at: '2025-02-20'
+      },
+      {
+        name: 'Lakshmi Devi',
+        condition: 'Chronic Back Pain',
+        rating: 5,
+        short: 'Years of back pain made daily life difficult. After 8 sessions with Varshini, I finally feel relief...',
+        full: 'Years of back pain made daily life difficult. After 8 sessions with Varshini, I finally feel relief. She didn\'t just treat the symptoms — she taught me exercises and posture corrections that will keep me pain-free long term.',
+        created_at: '2025-03-10'
+      }
+    ];
 
     // ===== LOAD REVIEWS AND SORT BY TIMESTAMP (NEWEST FIRST) =====
     async function loadReviews() {
